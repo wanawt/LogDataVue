@@ -1,14 +1,12 @@
 <template>
   <div class="small">
-    <div>
+    <div class="hhrow">
       <line-chart :chart-data="datacollection"></line-chart>
       <button @click="refreshData()">刷新</button>
-    </div>
-    <div>
+    </div><div class="hhrow">
       <bar-chart :chart-data="bardatacollection"></bar-chart>
       <button @click="refreshData()">刷新</button>
     </div>
-
   </div>
 </template>
 
@@ -30,31 +28,9 @@
       }
     },
     mounted () {
-      this.fillData()
+      this.refreshData()
     },
     methods: {
-      fillData () {
-        this.datacollection = {
-          labels: ['12日', '13日', '14日', '15日', '16日'],
-          datasets: [
-            {
-              label: '商品浏览量',
-              backgroundColor: "rgba(75,192,192,0.4)",
-              data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-            }
-          ]
-        }
-        this.bardatacollection = {
-          labels: ['12日', '13日', '14日', '15日', '16日'],
-          datasets: [
-            {
-              label: '商品浏览量',
-              backgroundColor: "rgba(75,192,192,0.4)",
-              data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-            }
-          ]
-        }
-      },
       refreshData() {
         var titleList = [];
         var countList = [];
@@ -80,7 +56,7 @@
               labels: titleList,
               datasets: [
                 {
-                  label: '搜索前五',
+                  label: '3月25日搜索前五',
                   backgroundColor: "rgba(75,192,192,0.4)",
                   data: countList,
                   backgroundColor: [
@@ -91,7 +67,7 @@
                                       'rgba(153, 102, 255, 0.2)',
                                       'rgba(255, 159, 64, 0.2)'
                                   ],
-                borderColor: [
+                  borderColor: [
                                       'rgba(255,99,132,1)',
                                       'rgba(54, 162, 235, 1)',
                                       'rgba(255, 206, 86, 1)',
@@ -115,7 +91,11 @@
 
 <style>
   .small {
-    max-width: 600px;
-    margin:  150px auto;
+    max-width: 1000px;
+    margin:  20px auto;
+  }
+  .hhrow {
+    width: 50%;
+    display:inline-block;
   }
 </style>
